@@ -61,9 +61,9 @@ def load_graph_dataset(file_path):
         raise ValueError(f"Unknown file format: {first_line}")
 
 
-root_dir = "ABR_test"
+root_dir = "dataset/Sparse_AB"
 runs = 20
-csv_dir = "result_csvs_abr_test"
+csv_dir = "result_csvs_unified_sparse"
 os.makedirs(csv_dir, exist_ok=True)
 
 for subfolder in sorted(os.listdir(root_dir)):
@@ -87,7 +87,7 @@ for subfolder in sorted(os.listdir(root_dir)):
 
         for algo_name, algo_fn in [
             ("greedy_joining", greedy_joining),
-            ("greedy_joining_lookahead", greedy_joining_cohesion)
+            ("greedy_joining_unified", greedy_joining_uniform)
         ]:
             print(f"   → {algo_name} ... ", end="", flush=True)
             costs = []

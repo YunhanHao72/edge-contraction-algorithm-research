@@ -69,14 +69,14 @@ def load_graph_dataset(file_path):
         raise ValueError(f"Unknown file format: {first_line}")
     
 
-n, edges, weights = load_graph_dataset("bridges.txt")
+n, edges, weights = load_graph_dataset("dataset/CP-Lib/ABR/bridges.txt")
 
 costs = []
 num_clusters = []
 times = []
 
 t_0 = time()
-cut_value, cluster_labels = greedy_joining_cohesion(n, edges, weights)
+cut_value, cluster_labels = greedy_joining_uniform(n, edges, weights)
 t_1 = time()
 
 

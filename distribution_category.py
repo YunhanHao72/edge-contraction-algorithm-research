@@ -5,8 +5,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-csv_dir = "result_csvs_uni_knott"
-output_dir = "result_category_uni_knott"
+csv_dir = "result_csvs_unified_sparse"
+output_dir = "result_category_unified_sparse"
 os.makedirs(output_dir, exist_ok=True)
 
 round_to_integer = True 
@@ -28,7 +28,7 @@ for subfolder in sorted(os.listdir(csv_dir)):
 
         instance_name = fname.replace("_greedy_joining.csv", "")
         greedy_csv = os.path.join(subfolder_path, fname)
-        lookahead_csv = os.path.join(subfolder_path, f"{instance_name}_greedy_joining_lookahead.csv")
+        lookahead_csv = os.path.join(subfolder_path, f"{instance_name}_greedy_joining_unified.csv")
 
         if not os.path.exists(lookahead_csv):
             print(f"Missing for {instance_name}, skip.")
@@ -61,10 +61,10 @@ for subfolder in sorted(os.listdir(csv_dir)):
 
     plt.figure(figsize=(6, 4))
     sns.kdeplot(all_greedy_norm, fill=True, label="GAEC")
-    sns.kdeplot(all_lookahead_norm, fill=True, label="Lookahead Greedy Joining")
+    sns.kdeplot(all_lookahead_norm, fill=True, label="Unified Greedy Joining")
 
     plt.axvline(np.mean(all_greedy_norm), color="blue", linestyle="--", label=f"greedy mean: {np.mean(all_greedy_norm):.2f}%")
-    plt.axvline(np.mean(all_lookahead_norm), color="orange", linestyle="--", label=f"lookahead mean: {np.mean(all_lookahead_norm):.2f}%")
+    plt.axvline(np.mean(all_lookahead_norm), color="orange", linestyle="--", label=f"unified mean: {np.mean(all_lookahead_norm):.2f}%")
 
     plt.title(f"Normalized Cost Improvement: {subfolder}")
     plt.xlabel("Improvement(%)")

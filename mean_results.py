@@ -3,8 +3,8 @@ import os
 import pandas as pd
 import numpy as np
 
-csv_root = "result_csvs_uni_sparse"
-output_dir = "mean_results_uni_sparse"
+csv_root = "result_csvs_unified_sparse"
+output_dir = "mean_results_unified_sparse"
 os.makedirs(output_dir, exist_ok=True)
 
 round_to_integer = True 
@@ -35,7 +35,7 @@ for subdir in sorted(os.listdir(csv_root)):
 
         instance_name = fname.replace("_greedy_joining.csv", "")
         greedy_csv = os.path.join(subdir_path, fname)
-        lookahead_csv = os.path.join(subdir_path, f"{instance_name}_greedy_joining_lookahead.csv")
+        lookahead_csv = os.path.join(subdir_path, f"{instance_name}_greedy_joining_unified.csv")
 
         if not os.path.exists(lookahead_csv):
             print(f"Missing file for {instance_name}, skipping.")

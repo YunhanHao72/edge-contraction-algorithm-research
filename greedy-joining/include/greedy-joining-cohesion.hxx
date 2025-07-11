@@ -168,7 +168,6 @@ greedy_joining_cohesion(size_t n, std::vector<std::array<size_t, 2>> edges, std:
         if (w > 0)
         {
             double reg = compute_reg_alpha(u, v);
-            // double prio = (reg > 0) ? (double(w) / reg) : INF_APPROX;
             double prio = double(w) * (1 + alpha * reg);
             queue.emplace(prio, u, v, w);
         }
@@ -183,6 +182,14 @@ greedy_joining_cohesion(size_t n, std::vector<std::array<size_t, 2>> edges, std:
 
         if (!graph.edgeExists(data.u, data.v) || data.w != graph.getEdgeWeight(data.u, data.v))
             continue;
+        
+        double current_reg = compute_reg_alpha(data.u, data.v);
+        double current_prio = double(data.w) * (1 + alpha * current_reg); 
+
+        if (std::abs(current_prio - data.prio) > 1e-6) {
+            queue.emplace(current_prio, data.u, data.v, data.w); 
+            continue;
+        }
 
         std::cout << "\rNumber of clusters: " << partition.numberOfSets() << "    " << std::flush;
 

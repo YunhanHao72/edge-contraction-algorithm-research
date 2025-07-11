@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-csv_dir = "result_csvs_uni/random"
-output_dir = "result_random_subclass_uni"
+csv_dir = "result_csvs_lookahead/random"
+output_dir = "result_random_subclass_lookahead"
 os.makedirs(output_dir, exist_ok=True)
 
 round_to_integer = True

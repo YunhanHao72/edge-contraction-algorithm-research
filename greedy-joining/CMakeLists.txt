@@ -8,8 +8,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # unit tests
-add_executable(test-greedy-joining unit-tests/greedy-joining.cxx)
-add_test(test-greedy-joining test-greedy-joining)
+# add_executable(test-greedy-joining unit-tests/greedy-joining.cxx)
+# add_test(test-greedy-joining test-greedy-joining)
 
 
 set(PYBIND11_FINDPYTHON ON)

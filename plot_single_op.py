@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.ticker import ScalarFormatter, MaxNLocator, FormatStrFormatter
 
-csv_root = "result_csvs_uni"
-output_dir = "kde_plots_uni"
+csv_root = "result_csvs_lookahead"
+output_dir = "plots_lookahead"
 os.makedirs(output_dir, exist_ok=True)
 
 round_to_integer = True 

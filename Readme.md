@@ -38,10 +38,10 @@ Located in `greedy-joining/include/`:
   Lookahead variant using structural conflict regularization.
 
 - `greedy-joining-cohesion.hxx`  
-  Variant using structural cohesion (positive reinforcement).
+  Variant using structural support.
 
 - `greedy-joining-uniform.hxx`  
-  Uniform strategy without structure-based priorities.
+  Unified strategy incorporating two algorithms.
 
 ## Notes
 
@@ -53,6 +53,6 @@ Located in `greedy-joining/include/`:
 This repository contains code under multiple licenses:
 
 - Components derived from the `graph` library by Bjoern Andres are licensed under the BSD 3-Clause License. We retain the original license text and attribution in the LICENSE file.
-- All other code developed for this research (especially files under `greedy-joining/include/` and Python scripts) is released under the MIT License.
+- All other code developed for this research (especially files under `greedy-joining/include/` and Python scripts) is also released under the BSD 3-Clause License.
 
 See the [LICENSE](./LICENSE) file for full details.

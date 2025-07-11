@@ -183,6 +183,17 @@ greedy_joining_uniform(size_t n, std::vector<std::array<size_t, 2>> edges, std::
 
         if (!graph.edgeExists(data.u, data.v) || data.w != graph.getEdgeWeight(data.u, data.v))
             continue;
+        
+        double current_reg_pos = compute_reg_alpha(data.u, data.v);
+        double current_reg_neg = compute_reg(data.u, data.v); 
+        double current_prio = (current_reg_neg > 0)
+                ? (double(data.w) * (1.0 + alpha * current_reg_pos)) / (1.0 + beta * current_reg_neg)
+                : INF_APPROX;
+
+        if (std::abs(current_prio - data.prio) > 1e-6) {
+            queue.emplace(current_prio, data.u, data.v, data.w); 
+            continue;
+        }
 
         std::cout << "\rNumber of clusters: " << partition.numberOfSets() << "    " << std::flush;
 

@@ -156,6 +156,14 @@ greedy_joining_lookahead(size_t n, std::vector<std::array<size_t, 2>> edges, std
         if (!graph.edgeExists(data.u, data.v) || data.w != graph.getEdgeWeight(data.u, data.v))
             continue;
 
+        double current_reg = compute_reg(data.u, data.v);
+        double current_prio = (current_reg > 0) ? (double(data.w) / current_reg) : INF_APPROX;
+
+        if (std::abs(current_prio - data.prio) > 1e-6) {
+            queue.emplace(current_prio, data.u, data.v, data.w); 
+            continue;
+        }
+
         std::cout << "\rNumber of clusters: " << partition.numberOfSets() << "    " << std::flush;
 
         auto stable_vertex = data.u;
